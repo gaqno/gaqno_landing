@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, Suspense } from 'react'
 import type { ReactNode } from 'react'
 import { SectionPlaceholder } from '../SectionPlaceholder'
 
@@ -39,7 +39,13 @@ export function StickyScrollClient(props: StickyScrollProps) {
 
   return (
     <div ref={ref}>
-      {visible ? <StickyScrollClient {...props} /> : <SectionPlaceholder />}
+      {visible ? (
+        <Suspense fallback={<SectionPlaceholder />}>
+          <StickyScrollClient {...props} />
+        </Suspense>
+      ) : (
+        <SectionPlaceholder />
+      )}
     </div>
   )
 }

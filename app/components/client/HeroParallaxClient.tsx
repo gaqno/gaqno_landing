@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, Suspense } from 'react'
 import type { StaticImageData } from 'next/image'
 import { SectionPlaceholder } from '../SectionPlaceholder'
 
@@ -41,7 +41,9 @@ export function HeroParallaxClient(props: HeroParallaxProps) {
   return (
     <div ref={ref}>
       {visible ? (
-        <HeroParallaxClient {...props} />
+        <Suspense fallback={<SectionPlaceholder height="480px" />}>
+          <HeroParallaxClient {...props} />
+        </Suspense>
       ) : (
         <SectionPlaceholder height="480px" />
       )}

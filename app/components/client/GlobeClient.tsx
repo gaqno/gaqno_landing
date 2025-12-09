@@ -1,11 +1,13 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import { SectionPlaceholder } from '../SectionPlaceholder'
 
 const Globe = dynamic(() => import('../Globe').then((module) => module.Globe), {
   ssr: false,
+  // suspense enabled for React Suspense usage
+  suspense: true,
 })
 
 export function GlobeClient() {
@@ -31,7 +33,13 @@ export function GlobeClient() {
 
   return (
     <div ref={ref}>
-      {visible ? <Globe /> : <SectionPlaceholder height="320px" />}
+      {visible ? (
+        <Suspense fallback={<SectionPlaceholder height="320px" />}>
+          <Globe />
+        </Suspense>
+      ) : (
+        <SectionPlaceholder height="320px" />
+      )}
     </div>
   )
 }
