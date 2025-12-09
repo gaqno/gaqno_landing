@@ -7,7 +7,6 @@ FROM base AS deps
 COPY package.json package-lock.json* ./
 RUN rm -rf ~/.npmrc /root/.npmrc .npmrc && \
     npm config set registry https://registry.npmjs.org/ && \
-    npm config delete @ab-inbev:registry || true && \
     npm ci --legacy-peer-deps --no-audit
 
 FROM base AS builder
