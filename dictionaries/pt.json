@@ -38,6 +38,11 @@
         "title": "Minha trajetória",
         "content": "Com mais de 5 anos na área, transformo ideias em produtos digitais que funcionam bem e são bonitos. Trabalho com times internacionais, liderando projetos do início ao fim, sempre pensando em qualidade, performance e experiência do usuário."
       },
+      "presentation": {
+        "title": "Apresentação",
+        "description": "Um pouco mais sobre minha jornada e como trabalho.",
+        "date": "Criado em 23 de abril de 2023"
+      },
       "education": {
         "title": "Formação",
         "items": [

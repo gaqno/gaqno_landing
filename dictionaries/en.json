@@ -38,6 +38,11 @@
         "title": "My journey",
         "content": "With over 5 years of experience, I transform ideas into functional and elegant digital products. I work with international teams, leading projects from conception to delivery, always prioritizing quality, performance, and user experience."
       },
+      "presentation": {
+        "title": "Presentation",
+        "description": "A bit more about my journey and how I work.",
+        "date": "Created on April 23, 2023"
+      },
       "education": {
         "title": "Education",
         "items": [

@@ -38,6 +38,11 @@ export type Dictionary = {
         title: string
         content: string
       }
+      presentation: {
+        title: string
+        description: string
+        date: string
+      }
       education: {
         title: string
         items: Array<{

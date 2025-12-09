@@ -341,6 +341,27 @@ export default function Landing({ dict }: { dict: Dictionary['landing'] }) {
               </div>
             </div>
           </div>
+          <div className="space-y-6 mb-12">
+            <div>
+              <h3 className="text-xl font-semibold mb-2">
+                {dict.about.presentation.title}
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                {dict.about.presentation.description}
+              </p>
+              <div className="rounded-lg border border-foreground/10 bg-secondary/40 overflow-hidden">
+                <iframe
+                  src="https://drive.google.com/file/d/1GDTCfr21r7k7aFgFhPQPErD7Bm0JjRD2/preview"
+                  className="w-full h-[400px] md:h-[500px]"
+                  allow="autoplay"
+                  title={dict.about.presentation.title}
+                />
+              </div>
+              <p className="text-xs text-muted-foreground mt-2">
+                {dict.about.presentation.date}
+              </p>
+            </div>
+          </div>
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">
               {dict.about.achievements.title}
