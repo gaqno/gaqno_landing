@@ -9,26 +9,35 @@ import {
 import { cn } from '@/utils/cn'
 import { DarkModeToggle } from './DarkModeToggle'
 import { LanguageToggle } from './LanguageToggle'
+import { PROJECTS, PROJECT_THUMBNAILS } from '../constants/projects'
 import type { Dictionary } from '../types/dictionary'
 
-const NewcoreImage = '/img/newcore.webp'
-const FFIDImage = '/img/ffid.webp'
-const RedeAncoraImage = '/img/rede-ancora.webp'
-const ATECHImage = '/img/atech.webp'
-const AmbevImage = '/img/ambev.webp'
-
-export default function Navbar({
-  className,
-  dict,
-}: {
+type NavbarProps = {
   className?: string
-  dict: Dictionary['navbar']
-}) {
+  dict: Dictionary['navbar'] & {
+    work?: Dictionary['landing']['work']
+  }
+}
+
+export default function Navbar({ className, dict }: NavbarProps) {
   const [active, setActive] = useState<string | null>(null)
+
+  const getProjectDescription = (projectId: string): string => {
+    const descriptions: Record<string, string> = {
+      lenin: dict.work?.items?.lenin?.description || '',
+      newcore: dict.work?.items?.newcore?.description || '',
+      ffid: dict.work?.items?.ffid?.description || '',
+      rede_ancora: dict.work?.items?.rede_ancora?.description || '',
+      atech: dict.work?.items?.atech?.description || '',
+      ambev: dict.work?.items?.ambev?.description || '',
+    }
+    return descriptions[projectId] || ''
+  }
+
   return (
     <div
       className={cn(
-        'fixed bottom-10 md:bottom-auto md:top-10 inset-x-0 mx-auto md:ml-[73%] z-50 w-auto max-w-[20em] md:max-w-[14em]',
+        'fixed bottom-10 md:bottom-auto md:top-10 inset-x-0 mx-auto md:ml-[73%] z-50 w-fit',
         className,
       )}
     >
@@ -62,37 +71,16 @@ export default function Navbar({
             active={active}
             item={dict.items.projects}
           >
-            <div className="text-sm grid grid-cols-1 md:grid-cols-2 gap-10 p-4">
-              <ProductItem
-                title="NewCore"
-                href={`#projetos/newcore`}
-                src={NewcoreImage}
-                description="E-commerce com CMS e integrações para catálogo vivo e checkouts rápidos."
-              />
-              <ProductItem
-                title="FFID"
-                href={`#projetos/ffid`}
-                src={FFIDImage}
-                description="Site institucional com CMS e integrações para catálogo vivo e checkouts rápidos."
-              />
-              <ProductItem
-                title="Rede Ancora"
-                href={`#projetos/rede-ancora`}
-                src={RedeAncoraImage}
-                description="Site institucional com CMS e integrações para catálogo vivo e checkouts rápidos."
-              />
-              <ProductItem
-                title="ATECH"
-                href={`#projetos/atech`}
-                src={ATECHImage}
-                description="Site institucional com CMS e integrações para catálogo vivo e checkouts rápidos."
-              />
-              <ProductItem
-                title="Ambev"
-                href={`#projetos/ambev`}
-                src={AmbevImage}
-                description="Site institucional com CMS e integrações para catálogo vivo e checkouts rápidos."
-              />
+            <div className="text-sm grid grid-cols-1 md:grid-cols-2 gap-10 p-4 min-w-[600px] max-w-[800px]">
+              {PROJECTS.filter((p) => p.id !== 'lenin').map((project) => (
+                <ProductItem
+                  key={project.id}
+                  title={project.title}
+                  href={`#projetos/${project.href}`}
+                  src={PROJECT_THUMBNAILS[project.id] || project.thumbnail}
+                  description={getProjectDescription(project.id)}
+                />
+              ))}
             </div>
           </MenuItem>
           <LanguageToggle />

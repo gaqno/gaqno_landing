@@ -7,15 +7,8 @@ import { StickyScroll } from '@/components/ui/sticky-scroll-reveal'
 import { GlobeClient } from './client/GlobeClient'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { PROJECTS, PROJECT_THUMBNAILS } from '../constants/projects'
 import type { Dictionary } from '../types/dictionary'
-
-const LeninGptImg = '/img/lenin-gpt.webp'
-const NewcoreLandingImg = '/img/newcore_landing.webp'
-const FFIDImg = '/img/ffidLogo.webp'
-const NewcoreImg = '/img/newcore.webp'
-const RedeAncoraImg = '/img/rede-ancora.webp'
-const AtechImg = '/img/atech.webp'
-const AmbevImg = '/img/ambev.webp'
 
 function SectionAnimation({
   children,
@@ -92,66 +85,17 @@ export default function Landing({ dict }: { dict: Dictionary['landing'] }) {
     },
   ]
 
-  const projects = [
-    {
-      title: 'Lenin GPT',
-      link: 'https://lenin.gaqno.com.br',
-      thumbnail: LeninGptImg,
-    },
-    {
-      title: 'NewCore',
-      link: 'https://www.newcore.com.br',
-      thumbnail: NewcoreLandingImg,
-    },
-    {
-      title: 'FFID',
-      link: 'https://www.ffid.com.br',
-      thumbnail: FFIDImg,
-    },
-    {
-      title: 'Rede Ancora',
-      link: 'https://www.redeancora.com.br',
-      thumbnail: RedeAncoraImg,
-    },
-    {
-      title: 'ATECH',
-      link: 'https://www.atech.com.br',
-      thumbnail: AtechImg,
-    },
-    {
-      title: 'Ambev',
-      link: 'https://www.ambev.com.br',
-      thumbnail: AmbevImg,
-    },
-  ]
+  const projects = PROJECTS.map((project) => ({
+    title: project.title,
+    link: project.link,
+    thumbnail: project.thumbnail,
+  }))
 
-  const companies = [
-    {
-      title: 'Newcore',
-      link: 'https://www.newcore.com.br',
-      thumbnail: NewcoreImg,
-    },
-    {
-      title: 'FFID',
-      link: 'https://www.ffid.com.br',
-      thumbnail: FFIDImg,
-    },
-    {
-      title: 'Rede Ancora',
-      link: 'https://www.redeancora.com.br',
-      thumbnail: RedeAncoraImg,
-    },
-    {
-      title: 'ATECH',
-      link: 'https://www.atech.com.br',
-      thumbnail: AtechImg,
-    },
-    {
-      title: 'Ambev',
-      link: 'https://www.ambev.com.br',
-      thumbnail: AmbevImg,
-    },
-  ]
+  const companies = PROJECTS.filter((p) => p.id !== 'lenin').map((project) => ({
+    title: project.title,
+    link: project.link,
+    thumbnail: PROJECT_THUMBNAILS[project.id] || project.thumbnail,
+  }))
 
   const approach = [
     {
@@ -196,139 +140,73 @@ export default function Landing({ dict }: { dict: Dictionary['landing'] }) {
     },
   ]
 
-  const workDetails = [
-    {
-      title: 'Lenin GPT',
-      href: 'lenin-gpt',
-      techs: [
-        { icon: 'mdi:vuejs', name: 'Vue 3' },
-        { icon: 'mdi:nuxt', name: 'Nuxt 3' },
-        { icon: 'mdi:graph', name: 'Neo4j' },
-        { icon: 'mdi:head-snowflake-outline', name: 'LLM' },
-      ],
-      description: dict.work.items.lenin.description,
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white bg-gradient-to-br from-slate-900 via-slate-800 to-black">
-          <Image
-            src={LeninGptImg}
-            width={320}
-            height={320}
-            className="h-full w-full object-cover"
-            alt="Lenin GPT"
-          />
-        </div>
-      ),
-    },
-    {
-      title: 'ATECH',
-      href: 'atech',
-      techs: [
-        { icon: 'mdi:angular', name: 'Angular' },
-        { icon: 'mdi:nodejs', name: 'Node.js' },
-        { icon: 'mdi:database', name: 'PostgreSQL' },
-      ],
-      description: dict.work.items.atech.description,
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white bg-gradient-to-br from-indigo-600 via-sky-500 to-cyan-400">
-          <Image
-            src={AtechImg}
-            width={320}
-            height={320}
-            className="h-full w-full object-cover"
-            alt="ATECH"
-          />
-        </div>
-      ),
-    },
-    {
-      title: 'NewCore',
-      href: 'newcore',
-      techs: [
-        { icon: 'mdi:angular', name: 'Angular' },
-        { icon: 'mdi:react', name: 'React' },
-        { icon: 'mdi:nestjs', name: 'NestJS' },
-        { icon: 'mdi:database', name: 'PostgreSQL' },
-        { icon: 'mdi:api', name: 'RESTful API' },
-        { icon: 'mdi:cloud', name: 'Vercel' },
-        { icon: 'mdi:tailwind', name: 'TailwindCSS' },
-      ],
-      description: dict.work.items.newcore.description,
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white bg-gradient-to-br from-indigo-600 via-sky-500 to-cyan-400">
-          <Image
-            src={NewcoreLandingImg}
-            width={320}
-            height={320}
-            className="h-full w-full object-cover"
-            alt="NewCore"
-          />
-        </div>
-      ),
-    },
-    {
-      title: 'FFID',
-      href: 'ffid',
-      techs: [
-        { icon: 'mdi:vuejs', name: 'Vue 3' },
-        { icon: 'mdi:nuxt', name: 'Nuxt 3' },
-        { icon: 'mdi:database', name: 'PostgreSQL' },
-      ],
-      description: dict.work.items.ffid.description,
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white bg-gradient-to-br from-slate-900 via-slate-800 to-black">
-          <Image
-            src={FFIDImg}
-            width={320}
-            height={320}
-            className="h-full w-full object-cover"
-            alt="FFID"
-          />
-        </div>
-      ),
-    },
-    {
-      title: 'Rede Ancora',
-      href: 'rede-ancora',
-      techs: [
-        { icon: 'mdi:angular', name: 'Angular' },
-        { icon: 'mdi:react', name: 'React' },
-        { icon: 'mdi:nestjs', name: 'NestJS' },
-      ],
-      description: dict.work.items.rede_ancora.description,
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white bg-gradient-to-br from-slate-900 via-slate-800 to-black">
-          <Image
-            src={RedeAncoraImg}
-            width={320}
-            height={320}
-            className="h-full w-full object-cover"
-            alt="Rede Ancora"
-          />
-        </div>
-      ),
-    },
-    {
-      title: 'Ambev',
-      href: 'ambev',
-      techs: [
-        { icon: 'mdi:angular', name: 'Angular' },
-        { icon: 'mdi:react', name: 'React' },
-        { icon: 'mdi:nestjs', name: 'NestJS' },
-      ],
-      description: dict.work.items.ambev.description,
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white bg-gradient-to-br from-slate-900 via-slate-800 to-black">
-          <Image
-            src={AmbevImg}
-            width={320}
-            height={320}
-            className="h-full w-full object-cover"
-            alt="Ambev"
-          />
-        </div>
-      ),
-    },
-  ]
+  const projectTechs: Record<string, Array<{ icon: string; name: string }>> = {
+    lenin: [
+      { icon: 'mdi:vuejs', name: 'Vue 3' },
+      { icon: 'mdi:nuxt', name: 'Nuxt 3' },
+      { icon: 'mdi:graph', name: 'Neo4j' },
+      { icon: 'mdi:head-snowflake-outline', name: 'LLM' },
+    ],
+    atech: [
+      { icon: 'mdi:angular', name: 'Angular' },
+      { icon: 'mdi:nodejs', name: 'Node.js' },
+      { icon: 'mdi:database', name: 'PostgreSQL' },
+    ],
+    newcore: [
+      { icon: 'mdi:angular', name: 'Angular' },
+      { icon: 'mdi:react', name: 'React' },
+      { icon: 'mdi:nestjs', name: 'NestJS' },
+      { icon: 'mdi:database', name: 'PostgreSQL' },
+      { icon: 'mdi:api', name: 'RESTful API' },
+      { icon: 'mdi:cloud', name: 'Vercel' },
+      { icon: 'mdi:tailwind', name: 'TailwindCSS' },
+    ],
+    ffid: [
+      { icon: 'mdi:vuejs', name: 'Vue 3' },
+      { icon: 'mdi:nuxt', name: 'Nuxt 3' },
+      { icon: 'mdi:database', name: 'PostgreSQL' },
+    ],
+    rede_ancora: [
+      { icon: 'mdi:angular', name: 'Angular' },
+      { icon: 'mdi:react', name: 'React' },
+      { icon: 'mdi:nestjs', name: 'NestJS' },
+    ],
+    ambev: [
+      { icon: 'mdi:angular', name: 'Angular' },
+      { icon: 'mdi:react', name: 'React' },
+      { icon: 'mdi:nestjs', name: 'NestJS' },
+    ],
+  }
+
+  const getProjectDescription = (projectId: string): string => {
+    const descriptions: Record<string, string> = {
+      lenin: dict.work.items.lenin.description,
+      atech: dict.work.items.atech.description,
+      newcore: dict.work.items.newcore.description,
+      ffid: dict.work.items.ffid.description,
+      rede_ancora: dict.work.items.rede_ancora.description,
+      ambev: dict.work.items.ambev.description,
+    }
+    return descriptions[projectId] || ''
+  }
+
+  const workDetails = PROJECTS.map((project) => ({
+    title: project.title,
+    href: project.href,
+    techs: projectTechs[project.id] || [],
+    description: getProjectDescription(project.id),
+    content: (
+      <div className="h-full w-full flex items-center justify-center text-white bg-gradient-to-br from-slate-900 via-slate-800 to-black">
+        <Image
+          src={project.thumbnail}
+          width={320}
+          height={320}
+          className="h-full w-full object-cover"
+          alt={project.title}
+        />
+      </div>
+    ),
+  }))
 
   return (
     <div className="relative overflow-hidden bg-background text-foreground">
