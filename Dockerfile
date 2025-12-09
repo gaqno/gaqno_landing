@@ -5,7 +5,10 @@ WORKDIR /app
 
 FROM base AS deps
 COPY package.json package-lock.json* ./
-RUN rm -f .npmrc && npm ci --legacy-peer-deps
+RUN rm -rf ~/.npmrc /root/.npmrc .npmrc && \
+    npm config set registry https://registry.npmjs.org/ && \
+    npm config delete @ab-inbev:registry || true && \
+    npm ci --legacy-peer-deps --no-audit
 
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
