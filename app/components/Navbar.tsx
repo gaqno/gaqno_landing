@@ -6,11 +6,14 @@ import {
   MenuItem,
   ProductItem,
 } from '@/components/ui/navbar-menu'
-import LeninGPTImage from '@/public/img/lenin-gpt.webp'
-import TovariXImage from '@/public/img/tovarix.webp'
-import PescaFuriosaImg from '@/public/img/pesca-furiosa.webp'
 import { cn } from '@/utils/cn'
 import { DarkModeToggle } from './DarkModeToggle'
+
+import NewcoreImage from '@/public/img/newcore.webp'
+import FFIDImage from '@/public/img/ffid.webp'
+import RedeAncoraImage from '@/public/img/rede-ancora.webp'
+import ATECHImage from '@/public/img/atech.webp'
+import AmbevImage from '@/public/img/ambev.webp'
 
 export default function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null)
@@ -35,28 +38,34 @@ export default function Navbar({ className }: { className?: string }) {
           <MenuItem setActive={setActive} active={active} item="Projetos">
             <div className="text-sm grid grid-cols-1 md:grid-cols-2 gap-10 p-4">
               <ProductItem
-                title="LeninGPT"
-                href="#projetos/lenin-gpt"
-                src={LeninGPTImage}
-                description="Chatbot utilizando Inteligência Artificial da OpenIA para responder perguntas"
+                title="NewCore"
+                href="#projetos/newcore"
+                src={NewcoreImage}
+                description="E-commerce com CMS e integrações para catálogo vivo e checkouts rápidos."
               />
               <ProductItem
-                title="TovariX"
-                href="#projetos/tovarix"
-                src={TovariXImage}
-                description="Um portal onde você tem assistencia financeira, sobre ações e investimentos"
+                title="FFID"
+                href="#projetos/ffid"
+                src={FFIDImage}
+                description="Site institucional com CMS e integrações para catálogo vivo e checkouts rápidos."
               />
               <ProductItem
-                title="Pesca Furiosa"
-                href="#projetos/pesca-furiosa"
-                src={PescaFuriosaImg}
-                description="Never write from scratch again. Go from idea to blog in minutes."
+                title="Rede Ancora"
+                href="#projetos/rede-ancora"
+                src={RedeAncoraImage}
+                description="Site institucional com CMS e integrações para catálogo vivo e checkouts rápidos."
               />
               <ProductItem
-                title="Marvel Dashboard"
-                href="#projetos/marvel-dashboard"
-                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-                description="Never write from scratch again. Go from idea to blog in minutes."
+                title="ATECH"
+                href="#projetos/atech"
+                src={ATECHImage}
+                description="Site institucional com CMS e integrações para catálogo vivo e checkouts rápidos."
+              />
+              <ProductItem
+                title="Ambev"
+                href="#projetos/ambev"
+                src={AmbevImage}
+                description="Site institucional com CMS e integrações para catálogo vivo e checkouts rápidos."
               />
             </div>
           </MenuItem>
