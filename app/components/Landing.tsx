@@ -521,49 +521,165 @@ export default function Landing({ dict }: { dict: Dictionary['landing'] }) {
 
       <section
         id="contact"
-        className="relative max-w-6xl mx-auto px-4 pb-24 flex flex-col gap-6"
+        className="relative max-w-6xl mx-auto px-4 pb-16 flex flex-col gap-6"
       >
         <SectionAnimation>
           <div className="rounded-[32px] border border-foreground/15 bg-gradient-to-br from-slate-200/80 via-slate-500/60 to-foreground text-foreground p-10 md:p-14">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div className="space-y-3">
-              <p className="text-sm uppercase tracking-[0.3em] text-foreground/70">
-                {dict.contact.tagline}
-              </p>
-              <h3 className="text-3xl md:text-4xl font-semibold">
-                {dict.contact.title}
-              </h3>
-              <p className="text-foreground/80 max-w-xl">
-                {dict.contact.description}
-              </p>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="space-y-3">
+                <p className="text-sm uppercase tracking-[0.3em] text-foreground/70">
+                  {dict.contact.tagline}
+                </p>
+                <h3 className="text-3xl md:text-4xl font-semibold">
+                  {dict.contact.title}
+                </h3>
+                <p className="text-foreground/80 max-w-xl">
+                  {dict.contact.description}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="mailto:gabriel.aquino@outlook.com"
+                  className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:-translate-y-0.5 transition shadow-lg shadow-black/10"
+                >
+                  {dict.contact.cta_email}
+                </a>
+                <a
+                  href="https://wa.me/5511991610328"
+                  className="rounded-full border border-foreground/30 text-foreground px-6 py-3 text-sm font-medium hover:-translate-y-0.5 transition bg-white/10 backdrop-blur"
+                >
+                  {dict.contact.cta_whatsapp}
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/gaqno/"
+                  className="rounded-full border border-foreground/30 text-foreground px-6 py-3 text-sm font-medium hover:-translate-y-0.5 transition bg-white/10 backdrop-blur"
+                >
+                  LinkedIn
+                </a>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="mailto:gabriel.aquino@outlook.com"
-                className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:-translate-y-0.5 transition shadow-lg shadow-black/10"
-              >
-                {dict.contact.cta_email}
-              </a>
-              <a
-                href="https://wa.me/5511991610328"
-                className="rounded-full border border-foreground/30 text-foreground px-6 py-3 text-sm font-medium hover:-translate-y-0.5 transition bg-white/10 backdrop-blur"
-              >
-                {dict.contact.cta_whatsapp}
-              </a>
-              <a
-                href="https://www.linkedin.com/in/gaqno/"
-                className="rounded-full border border-foreground/30 text-foreground px-6 py-3 text-sm font-medium hover:-translate-y-0.5 transition bg-white/10 backdrop-blur"
-              >
-                LinkedIn
-              </a>
-            </div>
-          </div>
-          </div>
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            {dict.contact.footer_note}
           </div>
         </SectionAnimation>
       </section>
+
+      <footer className="relative border-t border-foreground/10 mt-24 pt-16 pb-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <SectionAnimation>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-2">
+                    {dict.footer.tagline}
+                  </p>
+                  <h3 className="text-2xl font-semibold mb-3">
+                    {dict.footer.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {dict.footer.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="font-semibold text-sm uppercase tracking-wider">
+                  {dict.footer.quick_links.title}
+                </h4>
+                <ul className="space-y-3">
+                  {dict.footer.quick_links.items.map((link, index) => (
+                    <li key={index}>
+                      <a
+                        href={link.href}
+                        className="text-muted-foreground hover:text-foreground transition text-sm"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="font-semibold text-sm uppercase tracking-wider">
+                  {dict.footer.contact_info.title}
+                </h4>
+                <ul className="space-y-3">
+                  <li>
+                    <a
+                      href={`mailto:${dict.footer.contact_info.email}`}
+                      className="text-muted-foreground hover:text-foreground transition text-sm"
+                    >
+                      {dict.footer.contact_info.email}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`https://wa.me/5511991610328`}
+                      className="text-muted-foreground hover:text-foreground transition text-sm"
+                    >
+                      {dict.footer.contact_info.phone}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="font-semibold text-sm uppercase tracking-wider">
+                  {dict.footer.social.title}
+                </h4>
+                <div className="flex gap-4">
+                  <a
+                    href="https://github.com/gaqno"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition"
+                    aria-label="GitHub"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/gaqno/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition"
+                    aria-label="LinkedIn"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M20.25 2h-16.5C2.56 2 2 2.56 2 3.25v16.5C2 20.44 2.56 21 3.25 21h16.5c.69 0 1.25-.56 1.25-1.25v-16.5C21 2.56 20.44 2 19.75 2zM8.5 19h-3v-9h3v9zm-1.5-10.5c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm11 10.5h-3v-5.44c0-1.31-.25-2.56-1.81-2.56-1.81 0-2.09 1.41-2.09 2.56v5.44h-3v-9h3v1.44c.38-.59 1.31-1.44 2.81-1.44 2.31 0 4.19 1.5 4.19 4.69v4.31z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-8 border-t border-foreground/10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <p className="text-sm text-muted-foreground">
+                {dict.footer.copyright}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {dict.contact.footer_note}
+              </p>
+            </div>
+          </SectionAnimation>
+        </div>
+      </footer>
     </div>
   )
 }

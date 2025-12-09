@@ -37,7 +37,7 @@ export default function Navbar({ className, dict }: NavbarProps) {
   return (
     <div
       className={cn(
-        'fixed bottom-10 md:bottom-auto md:top-10 inset-x-0 mx-auto md:ml-[73%] z-50 w-fit',
+        'fixed bottom-10 md:bottom-auto md:top-10 inset-x-0 mx-auto z-50 w-fit',
         className,
       )}
     >
@@ -49,6 +49,9 @@ export default function Navbar({ className, dict }: NavbarProps) {
             item={dict.items.start.label}
           >
             <div className="flex flex-col space-y-4 text-sm">
+              <HoveredLink href={`#`}>
+                {dict.items.start.home}
+              </HoveredLink>
               <HoveredLink href={`#sobre`}>
                 {dict.items.start.who_am_i}
               </HoveredLink>

@@ -3,6 +3,7 @@ export type Dictionary = {
     items: {
       start: {
         label: string
+        home: string
         who_am_i: string
         techs: string
         projects: string
@@ -114,6 +115,24 @@ export type Dictionary = {
       cta_email: string
       cta_whatsapp: string
       footer_note: string
+    }
+    footer: {
+      tagline: string
+      title: string
+      description: string
+      quick_links: {
+        title: string
+        items: Array<{ label: string; href: string }>
+      }
+      contact_info: {
+        title: string
+        email: string
+        phone: string
+      }
+      social: {
+        title: string
+      }
+      copyright: string
     }
   }
 }

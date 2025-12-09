@@ -3,6 +3,7 @@
     "items": {
       "start": {
         "label": "Início",
+        "home": "Início",
         "who_am_i": "Quem sou?",
         "techs": "Tecnologias",
         "projects": "Projetos",
@@ -118,6 +119,18 @@
             "Utilização de tecnologias como React, React Native, TypeScript, Node, Angular, NestJS, Docker, DataDog e Google Cloud"
           ],
           "technologies": ["React", "React Native", "TypeScript", "Node.js", "Angular", "NestJS", "Docker", "DataDog", "Google Cloud"]
+        },
+        {
+          "company": "ATECH",
+          "role": "Front-end Developer",
+          "period": "Período anterior",
+          "location": "São Paulo, Brasil",
+          "description": "Dashboard para gerenciamento de missões desenvolvido em Angular.",
+          "responsibilities": [
+            "Criação de páginas consumindo APIs do backend",
+            "Desenvolvimento de interfaces para gerenciamento de missões"
+          ],
+          "technologies": ["Angular", "TypeScript", "RESTful API"]
         }
       ]
     },
@@ -222,7 +235,31 @@
       "description": "Produtos que soam modernos, suaves e confiáveis. Me conta a ideia que eu organizo a entrega.",
       "cta_email": "Mandar email",
       "cta_whatsapp": "Chamar no WhatsApp",
-      "footer_note": "Prazo apertado? Vamos focar no essencial e lançar com estilo."
+      "footer_note": "Prazo apertado? Sem problema. Vamos priorizar o que importa e entregar com qualidade."
+    },
+    "footer": {
+      "tagline": "Vamos conversar",
+      "title": "Pronto para começar seu próximo projeto?",
+      "description": "Estou disponível para novos desafios. Entre em contato e vamos transformar suas ideias em realidade.",
+      "quick_links": {
+        "title": "Links rápidos",
+        "items": [
+          { "label": "Início", "href": "#" },
+          { "label": "Sobre", "href": "#sobre" },
+          { "label": "Experiência", "href": "#caminho" },
+          { "label": "Projetos", "href": "#work" },
+          { "label": "Contato", "href": "#contact" }
+        ]
+      },
+      "contact_info": {
+        "title": "Contato",
+        "email": "gabriel.aquino@outlook.com",
+        "phone": "+55 11 99161-0328"
+      },
+      "social": {
+        "title": "Redes sociais"
+      },
+      "copyright": "© 2024 Gabriel Aquino. Todos os direitos reservados."
     }
   }
 }
